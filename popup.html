@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Font Changer</title>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <h1>Font Changer</h1>
+    <select id="fontSelector">
+      <option value="Arial, sans-serif">Arial</option>
+      <option value="Times New Roman, serif">Times New Roman</option>
+      <option value="Comic Sans MS, cursive">Comic Sans MS</option>
+    </select>
+  </body>
+</html>
+popup.js - This file contains the JavaScript that will handle user interactions with the popup window. Here's a template:
+javascript
+Copy code
+document.addEventListener("DOMContentLoaded", function() {
+  var fontSelector = document.getElementById("fontSelector");
+  fontSelector.addEventListener("change", function() {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {message: "changeFont", font: fontSelector.value});
+    });
+  });
+});
+That should be all the files you need! You may need to modify the CSS and JavaScript to fit your specific needs, but these templates should give you a good starting point.
+
+
+
+
+
+
